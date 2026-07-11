@@ -1,0 +1,34 @@
+{
+  "entities": {
+    "PromptConfig": {
+      "title": "Prompt Configuration",
+      "description": "A saved prompt configuration for merch design",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "productType": { "type": "string" },
+        "prompt": { "type": "string" },
+        "designStyle": { "type": "string" },
+        "primaryColor": { "type": "string" },
+        "fontStyle": { "type": "string" },
+        "categories": { 
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "isFavorite": { "type": "boolean" },
+        "timestamp": { "type": "number" },
+        "generatedImage": { "type": "string" },
+        "logoImage": { "type": "string" }
+      },
+      "required": ["id", "userId", "name", "productType", "prompt", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/configs/{configId}": {
+      "schema": { "$ref": "#/entities/PromptConfig" },
+      "description": "User's saved prompt configurations"
+    }
+  }
+}
